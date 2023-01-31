@@ -5,12 +5,12 @@ function photographerFactory(data) {
 
     function getUserCardDOM() {
         const article = document.createElement('article');
-        article.setAttribute("role", "region");
 
         const link = document.createElement('a');
         link.setAttribute("href", `../../photographer.html?id=${id}`);
         link.setAttribute("role", "link");
-        link.setAttribute("title", `Visiter la page de profil de ${name}`);
+        link.setAttribute("aria-label", `Profil de ${name}`);
+        //link.setAttribute("title", `Visiter la page de profil de ${name}`);
 
         const img = document.createElement('img');
         img.setAttribute("src", picture);
@@ -21,15 +21,15 @@ function photographerFactory(data) {
 
         const divDescription = document.createElement('div');
 
-        const location = document.createElement('p');
+        const location = document.createElement("p");
         location.textContent = `${city}, ${country}`;
         location.classList.add("photographer__location");
 
-        const slogan = document.createElement('p');
+        const slogan = document.createElement("p");
         slogan.textContent = tagline;
         slogan.classList.add("photographer__slogan");
 
-        const pricePerDay = document.createElement('p');
+        const pricePerDay = document.createElement("p");
         pricePerDay.textContent = `${price}€/jour`;
         pricePerDay.classList.add("photographer__price");
 
@@ -41,8 +41,37 @@ function photographerFactory(data) {
         divDescription.appendChild(slogan);
         divDescription.appendChild(pricePerDay);
 
-
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+
+    function getProfileHeader() {
+        const profileHeader = document.createElement("photograph-header");
+
+        const blockAbout = document.createElement("div");
+        blockAbout.classList.add("photograph-header__about");
+
+        const h1 = document.createElement("h1");
+        h1.textContent = name;
+        h1.classList.add("photograph-header__title");
+
+        const location = document.createElement("p");
+        location.textContent = `${city}, ${country}`;
+        location.classList.add("photograph-header__location");
+
+        const slogan = document.createElement("p");
+        slogan.textContent = tagline;
+        slogan.classList.add("photograph-header__slogan");
+
+        const img = document.createElement('img');
+        img.setAttribute("src", picture);
+        img.setAttribute("alt", "");
+
+        profileHeader.prepend(blockAbout);
+        blockAbout.appendChild(h1);
+        blockAbout.appendChild(location);
+        blockAbout.appendChild(slogan);
+
+        return (profileHeader);
+    }
+    return { name, picture, getUserCardDOM, getProfileHeader };
 }
