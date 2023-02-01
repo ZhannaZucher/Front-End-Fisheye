@@ -1,4 +1,4 @@
-function photographerFactory(data) {
+function photographerFactory(data={}) {
     const { name, portrait, city, country, id, tagline, price} = data;
 
     const picture = `assets/photographers/${portrait}`;
@@ -45,7 +45,9 @@ function photographerFactory(data) {
     }
 
     function getProfileHeader() {
-        const profileHeader = document.createElement("photograph-header");
+
+        const profileHeader = document.createElement("div");
+        profileHeader.classList.add("photograph-header__row");
 
         const blockAbout = document.createElement("div");
         blockAbout.classList.add("photograph-header__about");
@@ -66,10 +68,14 @@ function photographerFactory(data) {
         img.setAttribute("src", picture);
         img.setAttribute("alt", "");
 
+        const contactButton = document.querySelector(".contact-button");
+        
         profileHeader.prepend(blockAbout);
         blockAbout.appendChild(h1);
         blockAbout.appendChild(location);
         blockAbout.appendChild(slogan);
+        profileHeader.append(img);
+        blockAbout.after(contactButton);
 
         return (profileHeader);
     }
