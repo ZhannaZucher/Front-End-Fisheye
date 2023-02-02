@@ -65,6 +65,7 @@ function photographerFactory(data={}) {
         slogan.classList.add("photograph-header__slogan");
 
         const img = document.createElement('img');
+        img.classList.add("photograph-header__image");
         img.setAttribute("src", picture);
         img.setAttribute("alt", "");
 
