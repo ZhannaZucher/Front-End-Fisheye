@@ -7,32 +7,47 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
-  <body>
+  <body aria-hidden="false">
     <header class="header-logo" role="banner">
         <a class="header-logo__link" href="index.html" role="link" title="Revenir à la page d'accueil">
           <img src="assets/images/logo.png" class="header__logo" alt="Fisheye Home page" />
         </a>
     </header>
-    <main id="main">
+    <main id="main" role="main">
       <div class="photograph-header">
-        <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact-button" role= "button" aria-label="Contact Me" onclick="displayModal()">Contactez-moi</button>
       </div>
     </main>
-    <div id="contact_modal">
+
+    <!--Formulaire de contact-->
+    <div class="background-modal"></div>
+    <dialog id="contact-modal" role="dialog" aria-describedby="modal-title" aria-hidden="true">
 			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+				<header class="modal-header">
+          <h1 class="modal-header__title" id="modal-title">Contactez-moi</h1>
+          <img class="modal-header__close-icon close-button" aria-label="Fermer la modale de contact" alt="croix" src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="firstname">Prénom</label>
+						<input type="text" name="firstname" id="firstname"/>
 					</div>
-          <button class="contact-button">Envoyer</button>
+          <div>
+            <label for="lastname">Nom</label>
+            <input type="text" name="lastname" id="lastname"/>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email"/>
+          </div>
+          <div>
+            <label for="message">Votre message</label>
+            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+          </div>
+          <button type="submit" aria-label="Envoyer le formulaire" class="contact-button send-button">Envoyer</button>
 				</form>
 			</div>
-		</div>
+		</dialog>
     <script src="scripts/factories/photographer.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
