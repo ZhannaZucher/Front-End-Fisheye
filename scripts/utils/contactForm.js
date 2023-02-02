@@ -5,9 +5,9 @@ A faire:
 3. OK: récupérer le nom du photographe 
 4. OK: afficher le bon nom dans le title
 5. open modal avec aria-hidden true/false sur modale et body + no scroll + focus sur le btn close + bckground
-6. close modal avec escape et aria-hidden true/false + focus sur le btn open  + bckground
+6. close modal avec escape et aria-hidden true/false + focus sur le btn open  + bckground + effacer les input
 7. gérer les focus modal ouverte / modale fermée
-8. onsubmit afficher console.log des inputs
+8. OK: onsubmit afficher console.log des inputs
 */
 
 //Récupération des éléments du DOM
@@ -41,21 +41,22 @@ async function customizeTitle() {
 customizeTitle();
 
 
-
-
-
-
-
-
-
-
-
+//a retravailler
 function displayModal() {
     const modal = document.getElementById("contact-modal");
 	modal.style.display = "block";
 }
-
+//a retravailler
 function closeModal() {
     const modal = document.getElementById("contact-modal");
     modal.style.display = "none";
 }
+
+//Affichage du contenu du formulaire dans la console
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    console.log(firstName.value);
+    console.log(lastName.value);
+    console.log(email.value);
+    console.log(message.value);
+});
