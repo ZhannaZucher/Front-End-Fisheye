@@ -1,14 +1,51 @@
-#contact_modal {
-    display: none;
+/*Styles pour la page photographes*/
+body {
+    font-family: "DM Sans", sans-serif;
+    margin: 0 auto;
 }
 
+.header-logo {
+    padding: 0 100px;
+    margin: 40px 0 100px;
+}
+/*Styles pour le header*/
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
 }
 
-.contact_button {
+.photograph-header__row {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.photograph-header__title {
+    color: #D3573C;
+    font-size: 4em; 
+}
+
+.photograph-header__location {
+    color: #901C1C;
+    font-size: 1.5em;
+    margin: 16px 16px 16px 0;
+}
+
+.photograph-header__slogan {
+    color: #525252;
+    font-size: 1.13em;
+    
+}
+.photograph-header__image{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.contact-button {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -19,6 +56,11 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    align-self: center;
+}
+
+#contact_modal {
+    display: none;
 }
 
 .modal {
