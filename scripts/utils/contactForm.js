@@ -5,8 +5,8 @@ A faire:
 3. OK: récupérer le nom du photographe 
 4. OK: afficher le bon nom dans le title
 5. OK: open modal avec aria-hidden true/false sur modale et body + no scroll + focus sur le btn close + bckground
-6. close modal avec escape et aria-hidden true/false + focus sur le btn open  + bckground + effacer les input
-7. gérer les focus modal ouverte / modale fermée
+6. OK: close modal avec escape et aria-hidden true/false + focus sur le btn open  + bckground + effacer les input
+7. OK: gérer les focus modal ouverte / modale fermée
 8. OK: onsubmit afficher console.log des inputs
 */
 
@@ -42,25 +42,30 @@ async function customizeTitle() {
 };
 customizeTitle();
 
-//a retravailler : focus
+//Lancement du formulaire de contact
 function displayModal() {
 	modal.style.display = "block";
     background.style.display = "block";
     main.setAttribute("aria-hidden", true);
     modal.setAttribute("aria-hidden", false);
     body.classList.add("noscroll");
-    closeButton.focus();
 }
 
-//a retravailler: noscroll, focus, keyup
+//a retravailler: noscroll, keyup
 function closeModal() {
     modal.style.display = "none";
     background.style.display = "none";
     main.setAttribute("aria-hidden", false);
     modal.setAttribute("aria-hidden", true);
     body.classList.remove("noscroll");
-    contactButton.focus();
 }
+
+//Fermeture du formulaire avec ESC
+document.addEventListener("keydown", function(event) {
+    if(modal.ariaHidden === "false" && event.key === "Escape") {
+        closeModal();
+    }
+});
 
 //Affichage du contenu du formulaire dans la console, fermeture et reset du formulaire
 form.addEventListener('submit', function(event) {
