@@ -7,42 +7,42 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
-  <body aria-hidden="false">
+  <body>
     <header class="header-logo" role="banner">
         <a class="header-logo__link" href="index.html" role="link" title="Revenir à la page d'accueil">
           <img src="assets/images/logo.png" class="header__logo" alt="Fisheye Home page" />
         </a>
     </header>
-    <main id="main" role="main">
+    <main id="main" role="main" aria-hidden="false">
       <div class="photograph-header">
-        <button class="contact-button" role= "button" aria-label="Contact Me" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact-button" role="button" aria-label="Contact Me" onclick="displayModal()">Contactez-moi</button>
       </div>
     </main>
 
     <!--Formulaire de contact-->
     <div class="background-modal"></div>
-    <dialog id="contact-modal" role="dialog" aria-describedby="modal-title" aria-hidden="true">
+    <dialog id="contact-modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
 			<div class="modal">
 				<header class="modal-header">
           <h1 class="modal-header__title" id="modal-title">Contactez-moi</h1>
-          <img class="modal-header__close-icon close-button" aria-label="Fermer la modale de contact" alt="croix" src="assets/icons/close.svg" onclick="closeModal()" />
+          <img class="modal-header__close-icon close-button" aria-label="Fermer la modale de contact" alt="croix" src="assets/icons/close.svg" onclick="closeModal()" tabindex="0"/>
         </header>
 				<form>
 					<div>
-						<label for="firstname">Prénom</label>
-						<input type="text" name="firstname" id="firstname"/>
+						<label for="firstname" id="FirstName">Prénom</label>
+						<input type="text" name="firstname" id="firstname" aria-labelledby="FirstName"/>
 					</div>
           <div>
-            <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname"/>
+            <label for="lastname" id="LastName">Nom</label>
+            <input type="text" name="lastname" id="lastname" aria-labelledby="LastName"/>
           </div>
           <div>
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email"/>
+            <label for="email" id="Email">Email</label>
+            <input type="email" name="email" id="email" aria-labelledby="Email"/>
           </div>
           <div>
-            <label for="message">Votre message</label>
-            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+            <label for="message" id="YourMessage">Votre message</label>
+            <textarea name="message" id="message" cols="30" rows="10" aria-describedby="YourMessage"></textarea>
           </div>
           <button type="submit" aria-label="Envoyer le formulaire" class="contact-button send-button">Envoyer</button>
 				</form>
