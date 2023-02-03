@@ -7,7 +7,7 @@ function photographerFactory(data={}) {
         const article = document.createElement('article');
 
         const link = document.createElement('a');
-        link.setAttribute("href", `../../photographer.html?id=${id}`);
+        link.setAttribute("href", `./photographer.html?id=${id}`);
         link.setAttribute("role", "link");
         link.setAttribute("aria-label", `Profil de ${name}`);
         //link.setAttribute("title", `Visiter la page de profil de ${name}`);
