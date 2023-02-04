@@ -12,14 +12,15 @@ async function getData() {
 //Récupération de l'objet photographer concerné en fonction de l'id affichée dans l'URL et de ses média
 async function getPhotographerData(id) {
 	const data = await getData();
-	const {photographers} = data;
+	const {photographers, media} = data;
 	const photographer = photographers.find((photographer) => photographer.id === id);
 	//Récupération du nouveau array avec tous les média du photographe concerné
-	/*const mediaPortfolio = medias.filter((media) => media.photographerId === id);*/
+	const portfolio = media.filter((media) => media.photographerId === id);
 	console.log(photographer);
-	return [photographer];
+	return [photographer, portfolio];
 };
 
+//Affichage du header
 function displayDataPhotographer(photographer) {
 	const photographerHeader = document.querySelector('.photograph-header');
 	const photographerModel = photographerFactory(photographer);
@@ -28,9 +29,21 @@ function displayDataPhotographer(photographer) {
 	console.log(profileHeader);
 };
 
+//Affichage des media
+function displayPortfolio(portfolio) {
+	const portfolioSection = document.querySelector(".portfolio-section");
+
+	portfolio.forEach((media) => {
+		const mediaModel = mediaFactory(media);
+		const mediaCardDOM = mediaModel.getViewCardDOM();
+		portfolioSection.appendChild(mediaCardDOM);
+	});
+}
+
 async function init() {
-	const [photographer]  = await getPhotographerData(id);
+	const [photographer, portfolio]  = await getPhotographerData(id);
 	displayDataPhotographer(photographer);
+	displayPortfolio(portfolio);
 };
 
 init();
