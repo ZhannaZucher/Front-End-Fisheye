@@ -7,7 +7,7 @@ body {
 }
 
 *:focus {
-    border: 1px solid black;
+    border: 3px solid black;
 }
 
 .header {
@@ -15,7 +15,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 40px 0 100px;
+    margin: 40px 0 90px;
     padding: 0 9%;
 }
 
@@ -32,7 +32,8 @@ body {
 .photographer-section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    gap: 50px;
+    margin-bottom: 40px;
 }
 
 .photographer-section article {
