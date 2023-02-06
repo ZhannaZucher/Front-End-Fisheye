@@ -1,4 +1,4 @@
-/*Styles pour la page photographes*/
+/*Styles pour la présentation du photographe*/
 *:focus {
     border: 3px solid black;
 }
@@ -6,6 +6,7 @@
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0 auto;
+    max-width: 1440px;
 }
 .noscroll {
     overflow: hidden;
@@ -159,4 +160,85 @@ form textarea {
     align-self: flex-start;
     margin-top: 20px;
     font-size: 1.1em;
+}
+
+/*Styles pour la section portfolio*/
+.portfolio-section {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 2em;
+    padding: 70px;
+}
+
+.media {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    
+}
+
+.media__link {
+    width: 100%;
+    height: 300px;
+    border-radius: 0.5em;
+}
+
+.media__view {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0.5em;
+}
+
+.media__about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #901C1C;
+    font-size: 1.5em;
+    padding-top: 10px;
+
+}
+
+.media__likes {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.media__rating {
+    margin: 0 6px;
+}
+
+.media__button {
+    background-color: transparent;
+}
+
+/*Styles pour section aside*/
+.info-section {
+    background-color: #DB8876;
+    padding: 20px 30px;
+    height: 80px;
+    width: 380px;
+    border-radius: 5px;
+    position:fixed;
+    right: 3%;
+    bottom: 0;
+}
+
+.info-section__row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 1.5em;
+color: #000000;
+font-weight: 500;
+margin-top: 10px;
+}
+
+.info-section__rating {
+    filter: brightness(0%);
 }
