@@ -16,6 +16,7 @@ function mediaFactory(data) {
 			view = document.createElement('img');
 			view.setAttribute("src", `assets/portfolio/${photographerId}/${image}`);
 			view.setAttribute("alt", `${title}`);
+			view.classList.add("media__view");
 
 		} else if (data.hasOwnProperty("video")) {
 			view = document.createElement("video");
@@ -23,6 +24,7 @@ function mediaFactory(data) {
 			view.setAttribute("src", `assets/portfolio/${photographerId}/${video}`);
 			view.setAttribute("alt", `${title}`);
 			view.setAttribute("preload", "metadata");
+			view.classList.add("media__view");
 		}
 
 		const article = document.createElement('article');
@@ -30,7 +32,9 @@ function mediaFactory(data) {
 
 		const link = document.createElement('a');
 		link.classList.add("media__link");
-		link.setAttribute("href", "");
+		link.setAttribute("href", "#");
+		link.setAttribute("aria-label", `${title}, closup view`);
+		link.setAttribute("role", "link");
 
 		const aboutSection = document.createElement("div");
 		aboutSection.classList.add("media__about");
@@ -46,9 +50,11 @@ function mediaFactory(data) {
 		likesQuantity.textContent = `${likes}`;
 
 		const addLikesButton = document.createElement("button");
+		addLikesButton.classList.add("media__button");
 
-		//const heartIcon = createElement('img');
-		//heartIcon.setAttribute("src", "assets/icons/heart.svg");
+		const heartIcon = document.createElement('img');
+		heartIcon.setAttribute("src", "assets/icons/heart.svg");
+		heartIcon.setAttribute("alt", "likes");
 
 		article.appendChild(link);
 		link.appendChild(view);
@@ -57,7 +63,7 @@ function mediaFactory(data) {
 		aboutSection.appendChild(likesDiv);
 		likesDiv.appendChild(likesQuantity);
 		likesDiv.appendChild(addLikesButton);
-		//addLikesButton.appendChild(heartIcon);
+		addLikesButton.appendChild(heartIcon);
 
 		return (article);
 	}
