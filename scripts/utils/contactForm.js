@@ -51,7 +51,7 @@ function displayModal() {
     body.classList.add("noscroll");
 }
 
-//a retravailler: noscroll
+//Fermeture du formulaire 
 function closeModal() {
     modal.style.display = "none";
     background.style.display = "none";
