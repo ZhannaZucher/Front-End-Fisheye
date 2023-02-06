@@ -40,10 +40,19 @@ function displayPortfolio(portfolio) {
 	});
 }
 
+//Affichage de la section prix et likes
+function displayAside(photographer, portfolio) {
+	const infoSection = document.querySelector(".info-section");
+	const asideModel = photographerFactory(photographer, portfolio);
+	const asideCardDOM = asideModel.getInfoCardDOM();
+	infoSection.appendChild(asideCardDOM);
+}
+
 async function init() {
 	const [photographer, portfolio]  = await getPhotographerData(id);
 	displayDataPhotographer(photographer);
 	displayPortfolio(portfolio);
+	displayAside(photographer, portfolio);
 };
 
 init();
