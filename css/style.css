@@ -65,7 +65,9 @@ body {
     object-position: center;
 }
 
-article div p {
+.photographer__location, 
+.photographer__slogan, 
+.photographer__price {
     margin: 0 auto;
     text-align: center;
 }
