@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-    const { name, portrait, city, country, id, tagline, price} = data;
+    const { name, portrait, city, country, id, tagline, price, likes } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
@@ -67,7 +67,7 @@ function photographerFactory(data) {
         const img = document.createElement('img');
         img.classList.add("photograph-header__image");
         img.setAttribute("src", picture);
-        img.setAttribute("alt", "");
+        img.setAttribute("alt", name);
 
         const contactButton = document.querySelector(".contact-button");
         
@@ -80,5 +80,28 @@ function photographerFactory(data) {
 
         return (profileHeader);
     }
-    return { name, picture, getUserCardDOM, getProfileHeader };
+
+    function getInfoCardDOM() {
+        aside = document.createElement("div");
+        aside.classList.add("info-section__row");
+
+        totalRating = document.createElement("p");
+        totalRating.classList.add("info-section__rating");
+        //totalRating = 0;
+
+        const heartIcon = document.createElement('img');
+        heartIcon.setAttribute("src", "assets/icons/heart.svg");
+        heartIcon.setAttribute("alt", "likes");
+
+        pricePerDay = document.createElement("p");
+        pricePerDay.classList.add("info-section__price");
+        pricePerDay.textContent = `${price}€ / jour`;
+
+        aside.appendChild(totalRating);
+        aside.appendChild(pricePerDay);
+        totalRating.appendChild(heartIcon);
+
+        return (aside);
+    }
+    return { name, picture, getUserCardDOM, getProfileHeader, getInfoCardDOM };
 }
