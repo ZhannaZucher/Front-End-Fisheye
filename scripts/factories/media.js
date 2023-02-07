@@ -15,14 +15,14 @@ function mediaFactory(data) {
 		if (data.hasOwnProperty("image")) {
 			view = document.createElement('img');
 			view.setAttribute("src", `assets/portfolio/${photographerId}/${image}`);
-			view.setAttribute("alt", `${title}`);
+			view.setAttribute("alt", "");
 			view.classList.add("media__view");
 
 		} else if (data.hasOwnProperty("video")) {
 			view = document.createElement("video");
 			view.removeAttribute("controls");
 			view.setAttribute("src", `assets/portfolio/${photographerId}/${video}`);
-			view.setAttribute("alt", `${title}`);
+			view.setAttribute("alt", "");
 			view.setAttribute("preload", "metadata");
 			view.classList.add("media__view");
 		}
