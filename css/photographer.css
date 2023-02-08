@@ -242,3 +242,7 @@ margin-top: 10px;
 .info-section__rating {
     filter: brightness(0%);
 }
+
+.info-section__rating img{
+    margin: 0 0 0 7px;
+}
