@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-    const { name, portrait, city, country, id, tagline, price, likes } = data;
+    const { name, portrait, city, country, id, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
@@ -87,7 +87,9 @@ function photographerFactory(data) {
 
         totalRating = document.createElement("p");
         totalRating.classList.add("info-section__rating");
-        //totalRating = 0;
+
+        infoLikes = document.createElement("span");
+        infoLikes.classList.add("info-section__current-rating");
 
         const heartIcon = document.createElement('img');
         heartIcon.setAttribute("src", "assets/icons/heart.svg");
@@ -99,6 +101,7 @@ function photographerFactory(data) {
 
         aside.appendChild(totalRating);
         aside.appendChild(pricePerDay);
+        totalRating.appendChild(infoLikes);
         totalRating.appendChild(heartIcon);
 
         return (aside);
