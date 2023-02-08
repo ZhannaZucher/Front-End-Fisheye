@@ -56,11 +56,22 @@ function likesControl(event) {
 			--totalLikes;
 			delete likesBtn.dataset.isLiked;
 	};
+	getLikesTotalforAside(null, true);
 	return totalLikes;
 };
 
 //Récuperation des tous les likes du photographe
-//function getLike
+function getLikesTotalforAside(portfolio, afterLikesControl = false) {
+	if (afterLikesControl) {
+		document.querySelector(".info-section__current-rating").innerText = totalLikes;
+	} else {
+		totalLikes = 0;
+		portfolio.forEach((element) => {
+			totalLikes += element.likes;
+		});
+		document.querySelector(".info-section__current-rating").innerText = totalLikes;
+	}
+};
 
 //Affichage de la section prix et likes
 function displayAside(photographer, portfolio) {
@@ -68,6 +79,7 @@ function displayAside(photographer, portfolio) {
 	const asideModel = photographerFactory(photographer, portfolio);
 	const asideCardDOM = asideModel.getInfoCardDOM();
 	infoSection.appendChild(asideCardDOM);
+	getLikesTotalforAside(portfolio);
 };
 
 async function init() {
