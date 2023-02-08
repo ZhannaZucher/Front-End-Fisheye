@@ -1,3 +1,5 @@
+let totalLikes = 0; // variable pour compter les likes sur les média
+
 //Extraction de l'Id du photographe depuis l'URl affichée:
 const params = new URL(document.location).searchParams;
 const id = parseInt(params.get("id"));
@@ -7,7 +9,7 @@ console.log(id);
 async function getData() {
 	const response = await fetch('data/photographers.json');
 	return await response.json();
-}
+};
 
 //Récupération de l'objet photographer concerné en fonction de l'id affichée dans l'URL et de ses média
 async function getPhotographerData(id) {
@@ -37,8 +39,28 @@ function displayPortfolio(portfolio) {
 		const mediaModel = mediaFactory(media);
 		const mediaCardDOM = mediaModel.getViewCardDOM();
 		portfolioSection.appendChild(mediaCardDOM);
+		document.querySelector("article .media__button").addEventListener("click", likesControl);
 	});
-}
+};
+
+//Fonction pour la gestion des likes sur les media
+function likesControl(event) {
+	const likesBtn = event.currentTarget;
+	likesContent = likesBtn.previousElementSibling;
+		if(!likesBtn.dataset.isLiked) {
+			likesContent.innerText = parseInt(likesContent.innerText) + 1;
+			++totalLikes;
+			likesBtn.dataset.isLiked = true;
+		} else if (likesBtn.dataset.isLiked) {
+			likesContent.innerText = parseInt(likesContent.innerText) - 1;
+			--totalLikes;
+			delete likesBtn.dataset.isLiked;
+	};
+	return totalLikes;
+};
+
+//Récuperation des tous les likes du photographe
+//function getLike
 
 //Affichage de la section prix et likes
 function displayAside(photographer, portfolio) {
@@ -46,7 +68,7 @@ function displayAside(photographer, portfolio) {
 	const asideModel = photographerFactory(photographer, portfolio);
 	const asideCardDOM = asideModel.getInfoCardDOM();
 	infoSection.appendChild(asideCardDOM);
-}
+};
 
 async function init() {
 	const [photographer, portfolio]  = await getPhotographerData(id);
