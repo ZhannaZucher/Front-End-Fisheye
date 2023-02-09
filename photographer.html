@@ -17,6 +17,27 @@
       <div class="photograph-header">
         <button class="contact-button" role="button" aria-label="Contact Me" onclick="displayModal()">Contactez-moi</button>
       </div>
+
+      <!--Dropdown menu pour trier les média-->
+        <div class="dropdown">
+          <label for="filter-media" id="filter" class="dropdown-title">Trier par</label>
+          <div class="dropdown__wrapper">
+            <button  role="button" type="button" id="filter-media" class="dropdown__button" aria-haspopup="listbox" aria-expanded="false">
+              Popularité
+            </button>
+            <ul role="listbox" aria-labelledby="filter" class="dropdown__list">
+              <li role="option" tabindex="0" aria-selected="true" data-name="likes" class="dropdown__list-item">
+                Popularité
+              </li>
+              <li role="option" tabindex="0" aria-selected="false" data-name="date" class="dropdown__list-item">
+                Date
+              </li>
+              <li role="option" tabindex="0" aria-selected="false" data-name="title" class="dropdown__list-item">
+                Titre
+              </li>
+            </ul>
+          </div>
+        </div>>
       <section class="portfolio-section"></section>
       <aside class="info-section"></aside>
     </main>
