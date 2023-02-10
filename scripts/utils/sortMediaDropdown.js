@@ -15,13 +15,30 @@ dropdownButton.addEventListener("click", () => {
 	runDropdownMenu(true);
 });
 
-/*TODO list:
+//fermeture du dropdown avec ESC
+dropdownList.addEventListener("keydown", function (event) {
+	if (dropdownList.style.display = "flex" && event.key === "Escape") {
+	runDropdownMenu(false);		
+	}
+});
+
+//Appel de la fonction gérant les options pour chaque option onclick et sur événement du clavier
+dropdownOptions.forEach((option) => {
+	option.addEventListener("click", () => selectOption(option));
+	option.addEventListener("keydown", (event) => {
+		if (event.key == "Enter") {
+			selectOption(option);
+		}
+	});
+});
+
+/*TODO list:	
 1. faire une fonction qui :
 a. OK choisit une option pour trier
 b. OK communique option choisie a la fonction sort(à créer également à part)
 c. OK gère aria-selected true/false
 d. OK met le paramètre show=false pour la fonction runDropdownMenu pour pouvoir fermer la liste déroulante une fois option selectionnée
-e. injecte le text de l'option choisie dans le contenu du button fermer/ouvrir dropdown?
+e. OK injecte le text de l'option choisie dans le contenu du button fermer/ouvrir dropdown?
 */
 function selectOption(option) {
 	if (option.getAttribute("aria-selected") == "false") {
@@ -37,14 +54,3 @@ function selectOption(option) {
 	runDropdownMenu(false);
 	option.setAttribute("aria-selected", "true");
 };
-
-//Appel de la fonction gérant les options pour chaque option onclick et sur événement du clavier
-dropdownOptions.forEach((option) => {
-	option.addEventListener("click", () => selectOption(option));
-	option.addEventListener("keydown", (event) => {
-		if(event.key == "Enter") {
-			selectOption(option);
-		}
-	});
-});
-
