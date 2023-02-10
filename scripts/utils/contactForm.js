@@ -49,6 +49,7 @@ function displayModal() {
     main.setAttribute("aria-hidden", true);
     modal.setAttribute("aria-hidden", false);
     body.classList.add("noscroll");
+    modal.focus();
 }
 
 //Fermeture du formulaire 
@@ -58,6 +59,8 @@ function closeModal() {
     main.setAttribute("aria-hidden", false);
     modal.setAttribute("aria-hidden", true);
     body.classList.remove("noscroll");
+    contactButton.focus();
+    console.log(document.activeElement);                           
 }
 
 //Fermeture du formulaire avec ESC

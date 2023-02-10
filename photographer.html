@@ -42,11 +42,11 @@
       <section class="portfolio-section"></section>
       <!--Section information complémentaire du photographe-->
       <aside class="info-section"></aside>
-    </main>
+    </main> 
 
     <!--Formulaire de contact-->
     <div class="background-modal"></div>
-    <dialog id="contact-modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <dialog id="contact-modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true" tabindex="0">
 			<div class="modal">
 				<header class="modal-header">
           <h1 class="modal-header__title" id="modal-title">Contactez-moi</h1>
@@ -55,21 +55,21 @@
 				<form>
 					<div>
 						<label for="firstname" id="FirstName">Prénom</label>
-						<input type="text" name="firstname" id="firstname" aria-labelledby="FirstName"/>
+						<input type="text" name="firstname" id="firstname" aria-labelledby="FirstName" tabindex="0"/>
 					</div>
           <div>
             <label for="lastname" id="LastName">Nom</label>
-            <input type="text" name="lastname" id="lastname" aria-labelledby="LastName"/>
+            <input type="text" name="lastname" id="lastname" aria-labelledby="LastName" tabindex="0"/>
           </div>
           <div>
             <label for="email" id="Email">Email</label>
-            <input type="email" name="email" id="email" aria-labelledby="Email"/>
+            <input type="email" name="email" id="email" aria-labelledby="Email" tabindex="0"/>
           </div>
           <div>
             <label for="message" id="YourMessage">Votre message</label>
-            <textarea name="message" id="message" cols="30" rows="10" aria-describedby="YourMessage"></textarea>
+            <textarea name="message" id="message" cols="30" rows="10" aria-describedby="YourMessage" tabindex="0"></textarea>
           </div>
-          <button type="submit" aria-label="Envoyer le formulaire" class="contact-button send-button">Envoyer</button>
+          <button type="submit" aria-label="Envoyer le formulaire" class="contact-button send-button" tabindex="0">Envoyer</button>
 				</form>
 			</div>
 		</dialog>
