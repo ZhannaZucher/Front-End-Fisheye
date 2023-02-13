@@ -1,6 +1,6 @@
 function mediaFactory(data) {
 
-	const { id, photographerId, title, image, video, date, price, likes } = data;
+	const { id, photographerId, title, image, video, date, likes } = data;
 
 	function getViewCardDOM() {
 	//création de l'élément DOM en fonction du type de media
@@ -23,6 +23,9 @@ function mediaFactory(data) {
 		const article = document.createElement('article');
 		article.classList.add("media");
 		article.setAttribute("id", `media-${id}`);
+		article.dataset.title = `${title}`;
+		article.dataset.date =`${date}`;
+		article.dataset.likes = `${likes}`;
 
 		const link = document.createElement('a');
 		link.classList.add("media__link");
