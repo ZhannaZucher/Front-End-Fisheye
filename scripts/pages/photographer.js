@@ -39,8 +39,14 @@ function displayPortfolio(portfolio) {
 		const mediaModel = mediaFactory(media);
 		const mediaCardDOM = mediaModel.getViewCardDOM();
 		portfolioSection.appendChild(mediaCardDOM);
+		//const blabla = document.querySelector(`#media-${id} .media__button`);
+		//console.log(blabla);
+		//.addEventListener("click", likesControl);
 		document.querySelector("article .media__button").addEventListener("click", likesControl);
 	});
+	//affichage par défault par nombre de likes
+	listOfMedia = document.querySelectorAll(".portfolio-section article");
+	sortMedia("likes");
 };
 
 //Fonction pour la gestion des likes sur les media
