@@ -2,6 +2,7 @@
 const dropdownButton = document.querySelector(".dropdown__button");
 const dropdownList = document.querySelector(".dropdown__list");
 const dropdownOptions = document.querySelectorAll(".dropdown__list-item");
+const portfolioSection = document.querySelector(".portfolio-section");
 
 // fonction pour ouvrir / fermer la liste déroulante
 function runDropdownMenu(show) {
@@ -45,12 +46,50 @@ function selectOption(option) {
 		//on met à false la valeur booléenne de l'attribut "aria-selected" de l'option mise à "true" par défaut:
 		let unselectedOption = document.querySelector(`.dropdown__list-item[aria-selected="true"]`);
 		unselectedOption.setAttribute("aria-selected", "false");
-		//on appelle la fonction sortMedia sur l'option choisie(à faire): sortMedia(option.dataset.name);
+		//on appelle la fonction sortMedia pour trier les média 
+		sortMedia(option.dataset.name);
 		//on injecte le text de l'option choisie dans le contenu du button fermer/ouvrir dropdown:
 		dropdownButton.innerText = option.innerText;
-		//dropdownList.insertBefore(option, dropdownList.firstChild);
 	}
 	//on met l'argument de la fonction runDropdownMenu à false pour pouvoir fermer le dropdown
 	runDropdownMenu(false);
 	option.setAttribute("aria-selected", "true");
 };
+
+
+//tri du tableau de média du photographe
+/*function sortMedia(portfolio, sortBy) {
+	switch(sortBy) {
+		case "likes":
+			portfolio.sort((a,b) => b.dataset.likes - a.dataset.likes);
+			break;
+		case "date":
+			portfolio.sort((a, b) => new Date(a.dataset.date).getTime() > new Date(b.dataset.date).getTime() ? 1 : -1);
+			break;
+		case "title":
+			portfolio.sort((a, b) => a.dataset.title.toLowerCase() > b.dataset.title.toLowerCase() ? 1 : -1);
+		return portfolio;
+	}
+	portfolioSection.innerHTML = "";
+	displayPortfolio(portfolio);
+};*/
+
+function sortMedia(type) {
+	let array = [...listOfMedia];
+	switch (type) {
+		case "likes":
+			array.sort((a, b) => b.dataset.likes - a.dataset.likes);
+			break;
+		case "date":
+			array.sort((a, b) => new Date(a.dataset.date).getTime() > new Date(b.dataset.date).getTime() ? 1 : -1);
+			break;
+		case "title":
+			array.sort((a, b) => a.dataset.title.toLowerCase() > b.dataset.title.toLowerCase() ? 1 : -1);
+	}
+	portfolioSection.innerHTML = "";
+	array.forEach((element) => {
+		portfolioSection.appendChild(element);
+	})
+};
+
+
