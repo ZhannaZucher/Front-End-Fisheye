@@ -73,10 +73,31 @@
 				</form>
 			</div>
 		</dialog>
+
+    <!--Lightbox-->
+    <modal class="lightbox-wrapper" role="dialog" aria-label="Vue rapprochée de l'image" aria-hidden="true">
+      <button role="button"  aria-label="Fermer la boîte de dialogue" class="lightbox__close-button" onclick="closeLightbox()">
+        <img src="assets/icons/close.svg" alt="" class="lightbox__close-icon">
+      </button>
+      <div class="lightbox__content-row">
+        <a href="#" aria-label="Image précédente" class="lightbox__content-previous">
+          <img src="assets/icons/arrow.svg" alt="" class="lightbox__content-previous-icon" onclick="goToPrevious(-1)">
+        </a>
+        <div class="lightbox__media-container">
+          <div class="lightbox__media-display"></div>
+          <h2 class="lightbox__media-title"></h2>
+        </div>
+        <a href="#" aria-label="Image suivante" class="lightbox__content-next">
+          <img src="assets/icons/arrow.svg" alt="" class="lightbox__content-next-icon" onclick="goToNext(1)">
+        </a>
+      </div>
+
+    </modal>
     <script src="scripts/factories/media.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
     <script src="scripts/utils/sortMediaDropdown.js"></script>
+    <script src="scripts/utils/lightbox.js"></script>
   </body>
 </html>
