@@ -33,14 +33,7 @@ dropdownOptions.forEach((option) => {
 	});
 });
 
-/*TODO list:	
-1. faire une fonction qui :
-a. OK choisit une option pour trier
-b. OK communique option choisie a la fonction sort(à créer également à part)
-c. OK gère aria-selected true/false
-d. OK met le paramètre show=false pour la fonction runDropdownMenu pour pouvoir fermer la liste déroulante une fois option selectionnée
-e. OK injecte le text de l'option choisie dans le contenu du button fermer/ouvrir dropdown?
-*/
+
 function selectOption(option) {
 	if (option.getAttribute("aria-selected") == "false") {
 		//on met à false la valeur booléenne de l'attribut "aria-selected" de l'option mise à "true" par défaut:
