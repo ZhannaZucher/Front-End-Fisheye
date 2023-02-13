@@ -1,15 +1,3 @@
-/*
-A faire:
-1. OK: récupérer les éléments du DOM
-2. OK: fetch data 
-3. OK: récupérer le nom du photographe 
-4. OK: afficher le bon nom dans le title
-5. OK: open modal avec aria-hidden true/false sur modale et body + no scroll + focus sur le btn close + bckground
-6. OK: close modal avec escape et aria-hidden true/false + focus sur le btn open  + bckground + effacer les input
-7. OK: gérer les focus modal ouverte / modale fermée
-8. OK: onsubmit afficher console.log des inputs
-*/
-
 //Récupération des éléments du DOM
 const modal = document.getElementById("contact-modal");
 const background = document.querySelector(".background-modal");
@@ -59,8 +47,7 @@ function closeModal() {
     main.setAttribute("aria-hidden", false);
     modal.setAttribute("aria-hidden", true);
     body.classList.remove("noscroll");
-    contactButton.focus();
-    console.log(document.activeElement);                           
+    contactButton.focus();                          
 }
 
 //Fermeture du formulaire avec ESC
