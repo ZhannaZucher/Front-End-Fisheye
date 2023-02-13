@@ -359,7 +359,7 @@ margin-top: 10px;
 
 /*Styles for lightbox*/
 .background-lightbox {
-    display: block;
+    display: none;
     background-color: #E5E5E5;
     position: fixed;
     width: 100%;
@@ -368,7 +368,7 @@ margin-top: 10px;
     top: 0px;
 }
 .lightbox-wrapper {
-    display: block;
+    display: none;
     position: fixed;
     top: 40px;
     width: 95%;
@@ -429,7 +429,7 @@ transform: scale(0.9);
 }
 
 .lightbox__media-display {
-    border-radius: 5px;
+    border-radius: 6px;
 }
 
 .lightbox__media-display img,
