@@ -1,9 +1,11 @@
 function photographerFactory(data) {
+    //Desctructuration de l'objet et son assignement à la variable
     const { name, portrait, city, country, id, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
+        //Création du template pour la structure DOM présentant un photographe
         const article = document.createElement('article');
 
         const link = document.createElement('a');
@@ -45,7 +47,7 @@ function photographerFactory(data) {
     }
 
     function getProfileHeader() {
-
+        //Création du template pour la structure DOM du header présentant un photographe
         const profileHeader = document.createElement("div");
         profileHeader.classList.add("photograph-header__row");
 
@@ -82,6 +84,7 @@ function photographerFactory(data) {
     }
 
     function getInfoCardDOM() {
+        //Création du template pour la structure DOM de l'aside avec infos supplémentaires d'un photographe
         aside = document.createElement("div");
         aside.classList.add("info-section__row");
 
