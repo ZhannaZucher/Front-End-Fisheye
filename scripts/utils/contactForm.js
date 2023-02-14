@@ -25,7 +25,6 @@ async function getDatas() {
 async function customizeTitle() {
     const data = await getDatas();
     const photographer = data.photographers.find((photographer) => photographer.id === id);
-    console.log(photographer.name);
     title.textContent += " " + photographer.name;
 };
 customizeTitle();
