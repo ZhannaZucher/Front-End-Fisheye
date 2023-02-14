@@ -1,9 +1,9 @@
 function mediaFactory(data) {
-
+//Destructuration de l'objet et son assignement à la variable 
 	const { id, photographerId, title, image, video, date, likes } = data;
 
 	function getViewCardDOM() {
-	//création de l'élément DOM en fonction du type de media
+	//création de l'élément DOM pour accueillir un media en tenant compte de son type (img ou vidéo) 
 		let view;
 		if (data.hasOwnProperty("image")) {
 			view = document.createElement('img');
