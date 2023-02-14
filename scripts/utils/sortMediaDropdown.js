@@ -8,19 +8,20 @@ const portfolioSection = document.querySelector(".portfolio-section");
 function runDropdownMenu(show) {
 	let switchCurrentState = dropdownButton.getAttribute("aria-expanded") == "true" ? "false" : "true";
 	dropdownButton.setAttribute("aria-expanded", switchCurrentState);
-	dropdownList.style.display = show ? "flex" : "none";
+	dropdownList.style.display = show ? "flex" : "none"; dropdownButton.focus();
 }
 
 //Ecoute de l'événement sur le bouton du menu déroulant
 dropdownButton.addEventListener("click", () => {
-	runDropdownMenu(true);
+	runDropdownMenu(true); 
 });
 
 //fermeture du dropdown avec ESC
 dropdownList.addEventListener("keydown", function (event) {
 	if (dropdownList.style.display = "flex" && event.key === "Escape") {
-	runDropdownMenu(false);		
-	}
+		runDropdownMenu(false);
+		dropdownButton.focus();	
+	};	
 });
 
 //Appel de la fonction gérant les options pour chaque option onclick et sur événement du clavier
@@ -51,22 +52,6 @@ function selectOption(option) {
 
 
 //tri du tableau de média du photographe
-/*function sortMedia(portfolio, sortBy) {
-	switch(sortBy) {
-		case "likes":
-			portfolio.sort((a,b) => b.dataset.likes - a.dataset.likes);
-			break;
-		case "date":
-			portfolio.sort((a, b) => new Date(a.dataset.date).getTime() > new Date(b.dataset.date).getTime() ? 1 : -1);
-			break;
-		case "title":
-			portfolio.sort((a, b) => a.dataset.title.toLowerCase() > b.dataset.title.toLowerCase() ? 1 : -1);
-		return portfolio;
-	}
-	portfolioSection.innerHTML = "";
-	displayPortfolio(portfolio);
-};*/
-
 function sortMedia(type) {
 	let array = [...listOfMedia];
 	switch (type) {
@@ -82,7 +67,7 @@ function sortMedia(type) {
 	portfolioSection.innerHTML = "";
 	array.forEach((element) => {
 		portfolioSection.appendChild(element);
-	})
+	});
 };
 
 
