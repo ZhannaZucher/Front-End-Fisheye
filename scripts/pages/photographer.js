@@ -42,6 +42,7 @@ function displayPortfolio(portfolio) {
 	listOfMedia = document.querySelectorAll(".portfolio-section article");
 	//Les média sont triés par popularité par défault
 	sortMedia("likes");
+	initLightbox();
 };
 
 //Fonction pour la gestion des likes sur chaque media + retourne le n total de likes du photographe
@@ -95,6 +96,7 @@ async function init() {
 	displayDataPhotographer(photographer);
 	displayPortfolio(portfolio);
 	displayAside(photographer, portfolio);
+	//initLightbox();
 };
 
 init();
