@@ -28,12 +28,12 @@ dropdownList.addEventListener("keydown", function (event) {
 dropdownOptions.forEach((option) => {
 	option.addEventListener("click", () => selectOption(option));
 	option.addEventListener("keydown", (event) => {
-		if (event.key == "Enter") {
+		if (event.key == "Enter") {	
 			selectOption(option);
-		}
+			dropdownButton.focus();	
+		};
 	});
 });
-
 
 function selectOption(option) {
 	if (option.getAttribute("aria-selected") == "false") {
