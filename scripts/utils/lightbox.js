@@ -53,15 +53,17 @@ function openLightbox() {
 	
 	
 };
-
+// Affichage du média contenu dans le lien cliqué dans la Lightbox
 function displayMediaLightbox(link) {
 	const mediaContainer = document.querySelector(".lightbox__media-display");
 	const mediaTitle = document.querySelector(".lightbox__media-title");
 
 	mediaContainer.innerHTML = link.firstElementChild.outerHTML;
 	mediaTitle.innerHTML = link.nextElementSibling.firstElementChild.outerHTML;
-	// rajouter if video 
-
+	// Dans le cas où le média visé est une vidéo on rajoute les controls pour sa lecture
+	if (mediaContainer.firstElementChild.nodeName == "VIDEO") {
+		mediaContainer.firstElementChild.setAttribute("controls", true);
+	};
 };
 
 /*//Récupération du lien du média avec son ID
