@@ -5,7 +5,7 @@ TODO list:
    	OK! fermer LBOX (fonction à créer) + gestion des aria
 		=> goToNext (fonction à créer)
 		=> goToPrevious (fonction à créer) 
-		=> events keybord (arrows)
+		OK! events keybord (arrows)
 2. OK! fonction "ouvrir LBOX" avec
 		Lbox style block 
 		main : aria hidden=true, LBOX wrapper = false
@@ -22,15 +22,13 @@ const nextBtn = document.querySelector(".lightbox__content-next");
 const prevBtn = document.querySelector(".lightbox__content-previous");
 const mediaContainer = document.querySelector(".lightbox__media-display");
 const mediaTitle = document.querySelector(".lightbox__media-title");
-const links = document.getElementsByClassName("media__link");
+const links = document.getElementsByClassName("media__link"); //HTMLCollection
 
 //initLbox appelée dans displayPortfolio
 function initLightbox() {
 	openLightbox();
-
 	//gestion des événements onclick
 	closeBtn.addEventListener("click", closeLightbox);
-
 	// Lancement de la Lightbox sur l'événement du clavier
 	for (let link of links) {
 		link.addEventListener("keydown", (event) => {
@@ -39,12 +37,22 @@ function initLightbox() {
 			};
 		});
 	};
+	//les événements onclick pour pour flèches next / prev
+	nextBtn.addEventListener("click", function() {
+		goToNext(1); //fonction à créer
+	});
+	prevBtn.addEventListener("click", function () {
+		goToPrevious(-1); //fonction à créer
+	});
 	//gestion des événements de Lightbox au clavier
 	document.addEventListener("keydown", function(event) {
 		if (lightbox.ariaHidden === "false" && event.key === "Escape") {
 			closeLightbox();
+		} else if (event.key === "ArrowRight") {
+			goToNext(1); //fonction à créer
+		} else if (event.key === "ArrowLeft") {
+			goToPrevious(-1); //fonction à créer
 		};
-		//ici rajouter les évéments pour flèches next / prev
 	});
 };
 
@@ -78,7 +86,7 @@ function closeLightbox() {
 	main.setAttribute("aria-hidden", false);
 	lightbox.setAttribute("aria-hidden", true);
 	mediaContainer.innerHTML = "";
-}
+};
 
 
 
