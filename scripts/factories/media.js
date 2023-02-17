@@ -8,16 +8,18 @@ function mediaFactory(data) {
 		if (data.hasOwnProperty("image")) {
 			view = document.createElement('img');
 			view.setAttribute("src", `assets/portfolio/${photographerId}/${image}`);
-			view.setAttribute("alt", "");
+			view.setAttribute("alt", `${title}`);
 			view.classList.add("media__view");
+			view.dataset.id = `${id}`;
 
 		} else if (data.hasOwnProperty("video")) {
 			view = document.createElement("video");
 			view.removeAttribute("controls");
 			view.setAttribute("src", `assets/portfolio/${photographerId}/${video}`);
-			view.setAttribute("alt", "");
+			view.setAttribute("alt", `${title}`);
 			view.setAttribute("preload", "metadata");
 			view.classList.add("media__view");
+			view.dataset.id = `${id}`;
 		}
 
 		const article = document.createElement('article');
