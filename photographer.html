@@ -15,7 +15,7 @@
     </header>
     <main id="main" role="main" aria-hidden="false">
       <div class="photograph-header">
-        <button class="contact-button" role="button" aria-label="Contact Me" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact-button" role="button" aria-label="Contactez-moi" onclick="displayModal()">Contactez-moi</button>
       </div>
 
       <!--Dropdown menu pour trier les média-->
@@ -66,8 +66,8 @@
             <input type="email" name="email" id="email" aria-labelledby="courriel" tabindex="0"/>
           </div>
           <div>
-            <label for="message" id="Message">Votre message</label>
-            <textarea name="message" id="message" cols="30" rows="10" aria-describedby="Message" tabindex="0"></textarea>
+            <label for="message" id="Votre message">Votre message</label>
+            <textarea name="message" id="message" cols="30" rows="10" aria-describedby="Votre message" tabindex="0"></textarea>
           </div>
           <button type="submit" aria-label="Envoyer le formulaire" class="contact-button send-button" tabindex="0">Envoyer</button>
 				</form>
@@ -75,7 +75,7 @@
 		</dialog>
 
     <!--Lightbox-->
-    <modal class="lightbox-wrapper" role="dialog" aria-label="Vue rapprochée de l'image" aria-hidden="true">
+    <modal class="lightbox-wrapper" role="dialog" aria-label="Image closeup view" aria-hidden="true">
       <div class="lightbox__content-row">
         <button role="button" aria-label="Fermer la boîte de dialogue" class="lightbox__close-button">
           <img src="assets/icons/close.svg" alt="" class="lightbox__close-icon">
@@ -91,7 +91,6 @@
           <img src="assets/icons/arrow.svg" alt="arrow" class="lightbox__content-next-icon">
         </a>
       </div>
-
     </modal>
     <script src="scripts/factories/media.js"></script>
     <script src="scripts/factories/photographer.js"></script>
