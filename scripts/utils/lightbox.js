@@ -3,8 +3,7 @@ TODO list:
 1. fonction initLightbox avec les listeners  pour:
 	OK! ouvrir LBOX (fonction à créer) + gestion des aria
    	OK! fermer LBOX (fonction à créer) + gestion des aria
-		=> goToNext (fonction à créer)
-		=> goToPrevious (fonction à créer) 
+		=> goToNext / goToPrevious (fonction à créer)
 		OK! events keybord (arrows)
 2. OK! fonction "ouvrir LBOX" avec
 		Lbox style block 
@@ -39,21 +38,22 @@ function initLightbox() {
 	};
 	//les événements onclick pour pour flèches next / prev
 	nextBtn.addEventListener("click", function() {
-		goToNext(1); //fonction à créer
+		moreViews(1); 
 	});
 	prevBtn.addEventListener("click", function () {
-		goToPrevious(-1); //fonction à créer
+		moreViews(-1); 
 	});
 	//gestion des événements de Lightbox au clavier
 	document.addEventListener("keydown", function(event) {
 		if (lightbox.ariaHidden === "false" && event.key === "Escape") {
 			closeLightbox();
 		} else if (event.key === "ArrowRight") {
-			goToNext(1); //fonction à créer
+			moreViews(1); 
 		} else if (event.key === "ArrowLeft") {
-			goToPrevious(-1); //fonction à créer
+			moreViews(-1); 
 		};
 	});
+	findViewsIndex(1);
 };
 
 function openLightbox() {
@@ -65,6 +65,8 @@ function openLightbox() {
 			main.setAttribute("aria-hidden", true);
 			lightbox.setAttribute("aria-hidden", false);
 			closeBtn.focus();
+			//on détermine la position de la vue sur laquelle on ouvre LBox dans la liste des média 
+			currentViewIndex = Array.from(links).indexOf(link) + 1;
 			displayMediaLightbox(link);
 		});
 	};	
@@ -88,11 +90,31 @@ function closeLightbox() {
 	mediaContainer.innerHTML = "";
 };
 
+//Gestion du slideShow
+
+let currentViewIndex = 1;
+
+function findViewsIndex(n) {
+	const views = document.querySelectorAll(".media__link");//Nodelist
+	console.log(views);
+	//une fois au bout de la liste des media, on reinitialise sur le premeier élément de la liste
+	if (n > views.length) {
+		currentViewIndex = 1;
+	} else if (n < 1) {
+	//une fois au premier élément de la liste, on reinitialise sur le dernier élément de la liste
+		currentViewIndex = views.length;
+	};
+	displayMediaLightbox(views[currentViewIndex - 1]);
+};
+
+//Fonction premettant de passer à la vue suivante avec n=1 en paramètre et à la vue précédante avec n =-1
+function moreViews(n) {
+	findViewsIndex((currentViewIndex += n));
+}
 
 
 /*//Récupération du lien du média avec son ID
 function getUrlMedia(mediaId) {
-	//const listOfMedia = document.getElementsByTagName("article");
 	let array = [...listOfMedia];
 	let media;
 	//const mediaArray = Array.from(listOfMedia);
@@ -103,6 +125,4 @@ function getUrlMedia(mediaId) {
 		};
 	});
 	return media;
-};
-//const mediaList = document.getElementsByTagName("article");
-//console.log(mediaList);*/
+};*/
