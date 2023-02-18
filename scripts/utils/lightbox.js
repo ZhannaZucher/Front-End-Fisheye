@@ -32,6 +32,7 @@ function initLightbox() {
 	for (let link of links) {
 		link.addEventListener("keydown", (event) => {
 			if (event.key == "Enter") {
+				event.preventDefault();
 				openLightbox(link);
 			};
 		});
@@ -53,7 +54,6 @@ function initLightbox() {
 			moreViews(-1); 
 		};
 	});
-	findViewsIndex(1);
 };
 
 function openLightbox() {
@@ -66,10 +66,10 @@ function openLightbox() {
 			lightbox.setAttribute("aria-hidden", false);
 			closeBtn.focus();
 			//on détermine la position de la vue sur laquelle on ouvre LBox dans la liste des média 
-			currentViewIndex = Array.from(links).indexOf(link) + 1;
+			currentViewIndex = Array.from(links).indexOf(link);
 			displayMediaLightbox(link);
 		});
-	};	
+	};
 };
 
 // Affichage du média contenu dans le lien cliqué dans la Lightbox
@@ -92,19 +92,20 @@ function closeLightbox() {
 
 //Gestion du slideShow
 
-let currentViewIndex = 1;
+let currentViewIndex = 0;
 
+//fonction permettant de boucler la liste de vues dans les deux sens, l'argument "n" correspond au sens de changement de vues dans lightbox
 function findViewsIndex(n) {
 	const views = document.querySelectorAll(".media__link");//Nodelist
 	console.log(views);
-	//une fois au bout de la liste des media, on reinitialise sur le premeier élément de la liste
-	if (n > views.length) {
-		currentViewIndex = 1;
-	} else if (n < 1) {
-	//une fois au premier élément de la liste, on reinitialise sur le dernier élément de la liste
-		currentViewIndex = views.length;
+	//si on est au bout de la liste des media, on reinitialise sur le premeier élément de la liste
+	if (n > views.length - 1) {
+		currentViewIndex = 0;
+	} else if (n < 0) {
+	//si on arrive au premier élément de la liste, on reinitialise sur le dernier élément de la liste
+		currentViewIndex = views.length - 1;
 	};
-	displayMediaLightbox(views[currentViewIndex - 1]);
+	displayMediaLightbox(views[currentViewIndex]);
 };
 
 //Fonction premettant de passer à la vue suivante avec n=1 en paramètre et à la vue précédante avec n =-1
