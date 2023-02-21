@@ -8,8 +8,9 @@ const portfolioSection = document.querySelector(".portfolio-section");
 function runDropdownMenu(show) {
 	let switchCurrentState = dropdownButton.getAttribute("aria-expanded") == "true" ? "false" : "true";
 	dropdownButton.setAttribute("aria-expanded", switchCurrentState);
-	dropdownList.style.display = show ? "flex" : "none"; dropdownButton.focus();
-}
+	dropdownList.style.display = show ? "flex" : "none"; 
+	//dropdownButton.focus(); //!problème
+}		
 
 //Ecoute de l'événement sur le bouton du menu déroulant
 dropdownButton.addEventListener("click", () => {
@@ -30,7 +31,7 @@ dropdownOptions.forEach((option) => {
 	option.addEventListener("keydown", (event) => {
 		if (event.key == "Enter") {	
 			selectOption(option);
-			dropdownButton.focus();	
+			//dropdownButton.focus(); //!problème
 		};
 	});
 });
