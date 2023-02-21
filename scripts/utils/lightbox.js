@@ -1,19 +1,3 @@
-/*
-TODO list:
-1. fonction initLightbox avec les listeners  pour:
-	OK! ouvrir LBOX (fonction à créer) + gestion des aria
-   	OK! fermer LBOX (fonction à créer) + gestion des aria
-		=> goToNext / goToPrevious (fonction à créer)
-		OK! events keybord (arrows)
-2. OK! fonction "ouvrir LBOX" avec
-		Lbox style block 
-		main : aria hidden=true, LBOX wrapper = false
-		focus sur btn close
-		appel de la fonction setMediaView (soit avec links soit avec id)
-3. OK! fonction fermer LBOX: display none + aria + focus
-4.  => fonction qui gère next/prev slideShow (avec index)
-...
-*/
 //Récupération des éléments DOM
 const lightbox = document.querySelector(".lightbox-wrapper");
 const closeBtn = document.querySelector(".lightbox__close-button");
@@ -21,22 +5,16 @@ const nextBtn = document.querySelector(".lightbox__content-next");
 const prevBtn = document.querySelector(".lightbox__content-previous");
 const mediaContainer = document.querySelector(".lightbox__media-display");
 const mediaTitle = document.querySelector(".lightbox__media-title");
-const links = document.getElementsByClassName("media__link"); //HTMLCollection
+const links = document.getElementsByClassName("media__link"); //!HTMLCollection
 
 //initLbox appelée dans displayPortfolio
 function initLightbox() {
+	//ouverture de Lightbox
 	openLightbox();
+
 	//gestion des événements onclick
 	closeBtn.addEventListener("click", closeLightbox);
-	// Lancement de la Lightbox sur l'événement du clavier
-	for (let link of links) {
-		link.addEventListener("keydown", (event) => {
-			if (event.key == "Enter") {
-				event.preventDefault();
-				openLightbox(link);
-			};
-		});
-	};
+
 	//les événements onclick pour pour flèches next / prev
 	nextBtn.addEventListener("click", function() {
 		moreViews(1); 
@@ -57,18 +35,27 @@ function initLightbox() {
 };
 
 function openLightbox() {
-	//Lancement de la lighbox onclick sur le lien de média
+	//Ecoute des événements initiant l'ouverture de Lightbox
 	for (let link of links) {
-		link.addEventListener("click", event => {
-			event.preventDefault();
-			lightbox.style.display = "block";
-			main.setAttribute("aria-hidden", true);
-			lightbox.setAttribute("aria-hidden", false);
-			closeBtn.focus();
-			//on détermine la position de la vue sur laquelle on ouvre LBox dans la liste des média 
-			currentViewIndex = Array.from(links).indexOf(link);
-			displayMediaLightbox(link);
+		link.addEventListener("click", function(event) {
+			handleClick(event, link);
 		});
+		link.addEventListener("keydown", function(event) {
+			if (event.key == "Enter") {
+				handleClick(event, link);
+			};
+		});
+	};
+	//Lancement de la lighbox onclick et sur l'événement du clavier
+	function handleClick(event, link) {
+		event.preventDefault();
+		lightbox.style.display = "block";
+		main.setAttribute("aria-hidden", true);
+		lightbox.setAttribute("aria-hidden", false);
+		closeBtn.focus();
+		//on détermine la position de la vue sur laquelle on ouvre LBox dans la liste des média 
+		currentViewIndex = Array.from(links).indexOf(link);
+		displayMediaLightbox(link);
 	};
 };
 
@@ -87,6 +74,7 @@ function closeLightbox() {
 	lightbox.style.display = "none";
 	main.setAttribute("aria-hidden", false);
 	lightbox.setAttribute("aria-hidden", true);
+	document.querySelector(".portfolio-section a").focus();
 	mediaContainer.innerHTML = "";
 };
 
@@ -96,8 +84,7 @@ let currentViewIndex = 0;
 
 //fonction permettant de boucler la liste de vues dans les deux sens, l'argument "n" correspond au sens de changement de vues dans lightbox
 function findViewsIndex(n) {
-	const views = document.querySelectorAll(".media__link");//Nodelist
-	console.log(views);
+	const views = document.querySelectorAll(".media__link");//!Nodelist
 	//si on est au bout de la liste des media, on reinitialise sur le premeier élément de la liste
 	if (n > views.length - 1) {
 		currentViewIndex = 0;
@@ -111,19 +98,4 @@ function findViewsIndex(n) {
 //Fonction premettant de passer à la vue suivante avec n=1 en paramètre et à la vue précédante avec n =-1
 function moreViews(n) {
 	findViewsIndex((currentViewIndex += n));
-}
-
-
-/*//Récupération du lien du média avec son ID
-function getUrlMedia(mediaId) {
-	let array = [...listOfMedia];
-	let media;
-	//const mediaArray = Array.from(listOfMedia);
-	//console.log(listOfMedia);
-	array.forEach((currentMedia) => {
-		if (currentMedia.id == mediaId) {
-			media = currentMedia;
-		};
-	});
-	return media;
-};*/
+};
