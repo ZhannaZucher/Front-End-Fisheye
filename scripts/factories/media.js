@@ -5,14 +5,14 @@ function mediaFactory(data) {
 	function getViewCardDOM() {
 	//création de l'élément DOM pour accueillir un media en tenant compte de son type (img ou vidéo) 
 		let view;
-		if (data.hasOwnProperty("image")) {
+		if (image) {
 			view = document.createElement('img');
 			view.setAttribute("src", `assets/portfolio/${photographerId}/${image}`);
 			view.setAttribute("alt", `${title}`);
 			view.classList.add("media__view");
 			view.dataset.id = `${id}`;
 
-		} else if (data.hasOwnProperty("video")) {
+		} else if (video) {
 			view = document.createElement("video");
 			view.removeAttribute("controls");
 			view.setAttribute("src", `assets/portfolio/${photographerId}/${video}`);
@@ -67,4 +67,4 @@ function mediaFactory(data) {
 		return (article);
 	}
 	return { getViewCardDOM };
-};
+}

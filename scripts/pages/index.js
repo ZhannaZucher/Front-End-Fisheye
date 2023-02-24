@@ -12,13 +12,13 @@ async function getPhotographers() {
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
         });
-    };
+    }
 
     async function init() {
         // Récupèration des datas des photographes
         const { photographers } = await getPhotographers();
         displayData(photographers);
-    };
+    }
     
     init();
     

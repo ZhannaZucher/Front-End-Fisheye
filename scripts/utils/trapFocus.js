@@ -10,13 +10,13 @@ const focusInModal = function (event, element) {
 		index--;
 	} else {
 		index++;
-	};
+	}
 	if (index >= focusables.length) {
 		index = 0;
-	};
+	}
 	if (index < 0) {
 		index = focusables.length - 1;
-	};
+	}
 	//mise de focus sur index 	
 	focusables[index].focus();
 };
@@ -29,5 +29,5 @@ window.addEventListener("keydown", function (event) {
 		focusInModal(event, lightbox);
 	} else if (event.key === "Tab" && dropdownList.style.display === "flex") {
 		focusInModal(event, dropdownList);
-	};
-});
+	}
+});                                       

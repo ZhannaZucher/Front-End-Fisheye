@@ -19,14 +19,14 @@ const inputs = [firstName, lastName, email, message];
 async function getDatas() {
     const response = await fetch('data/photographers.json');
     return await response.json();
-};
+}
 
 //Récupération du nom du photographe et affichage du titre personnalisé
 async function customizeTitle() {
     const data = await getDatas();
     const photographer = data.photographers.find((photographer) => photographer.id === id);
     title.textContent += " " + photographer.name;
-};
+}
 customizeTitle();
 
 //Lancement du formulaire de contact

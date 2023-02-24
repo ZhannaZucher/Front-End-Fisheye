@@ -8,9 +8,9 @@ const portfolioSection = document.querySelector(".portfolio-section");
 function runDropdownMenu(show) {
 	let switchCurrentState = dropdownButton.getAttribute("aria-expanded") == "true" ? "false" : "true";
 	dropdownButton.setAttribute("aria-expanded", switchCurrentState);
-	dropdownList.style.display = show ? "flex" : "none"; 
+	dropdownList.style.display = show ? "flex" : "none";  
 	//dropdownButton.focus(); //!problème
-}		
+}	
 
 //Ecoute de l'événement sur le bouton du menu déroulant
 dropdownButton.addEventListener("click", () => {
@@ -19,20 +19,20 @@ dropdownButton.addEventListener("click", () => {
 
 //fermeture du dropdown avec ESC
 dropdownList.addEventListener("keydown", function (event) {
-	if (dropdownList.style.display = "flex" && event.key === "Escape") {
+	if (dropdownList.style.display === "flex" && event.key === "Escape") {
 		runDropdownMenu(false);
 		dropdownButton.focus();	
-	};	
+	}	
 });
 
 //Appel de la fonction gérant les options pour chaque option onclick et sur événement du clavier
 dropdownOptions.forEach((option) => {
 	option.addEventListener("click", () => selectOption(option));
 	option.addEventListener("keydown", (event) => {
-		if (event.key == "Enter") {	
+		if (event.key == "Enter") {		
 			selectOption(option);
 			//dropdownButton.focus(); //!problème
-		};
+		}
 	});
 });
 
@@ -49,8 +49,7 @@ function selectOption(option) {
 	//on met l'argument de la fonction runDropdownMenu à false pour pouvoir fermer le dropdown
 	runDropdownMenu(false);
 	option.setAttribute("aria-selected", "true");
-};
-
+}
 
 //tri du tableau de média du photographe
 function sortMedia(type) {
@@ -69,6 +68,4 @@ function sortMedia(type) {
 	array.forEach((element) => {
 		portfolioSection.appendChild(element);
 	});
-};
-
-
+}

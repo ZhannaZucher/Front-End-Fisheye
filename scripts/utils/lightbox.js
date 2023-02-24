@@ -30,9 +30,9 @@ function initLightbox() {
 			moreViews(1); 
 		} else if (event.key === "ArrowLeft") {
 			moreViews(-1); 
-		};
+		}
 	});
-};
+}
 
 function openLightbox() {
 	//Ecoute des événements initiant l'ouverture de Lightbox
@@ -43,9 +43,9 @@ function openLightbox() {
 		link.addEventListener("keydown", function(event) {
 			if (event.key == "Enter") {
 				handleClick(event, link);
-			};
+			}
 		});
-	};
+	}
 	//Lancement de la lighbox onclick et sur l'événement du clavier
 	function handleClick(event, link) {
 		event.preventDefault();
@@ -56,8 +56,8 @@ function openLightbox() {
 		//on détermine la position de la vue sur laquelle on ouvre LBox dans la liste des média 
 		currentViewIndex = Array.from(links).indexOf(link);
 		displayMediaLightbox(link);
-	};
-};
+	}
+}
 
 // Affichage du média contenu dans le lien cliqué dans la Lightbox
 function displayMediaLightbox(link) {
@@ -66,8 +66,8 @@ function displayMediaLightbox(link) {
 	// Dans le cas où le média visé est une vidéo on rajoute les controls pour sa lecture
 	if (mediaContainer.firstElementChild.nodeName == "VIDEO") {
 		mediaContainer.firstElementChild.setAttribute("controls", true);
-	};
-};
+	}
+}
 
 //Fermeture de la Lightbox
 function closeLightbox() {
@@ -76,7 +76,7 @@ function closeLightbox() {
 	lightbox.setAttribute("aria-hidden", true);
 	document.querySelector(".portfolio-section a").focus();
 	mediaContainer.innerHTML = "";
-};
+}
 
 //Gestion du slideShow
 
@@ -91,11 +91,11 @@ function findViewsIndex(n) {
 	} else if (n < 0) {
 	//si on arrive au premier élément de la liste, on reinitialise sur le dernier élément de la liste
 		currentViewIndex = views.length - 1;
-	};
+	}
 	displayMediaLightbox(views[currentViewIndex]);
-};
+}
 
 //Fonction premettant de passer à la vue suivante avec n=1 en paramètre et à la vue précédante avec n =-1
 function moreViews(n) {
 	findViewsIndex((currentViewIndex += n));
-};
+}

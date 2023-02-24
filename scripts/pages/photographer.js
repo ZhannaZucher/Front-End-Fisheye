@@ -8,7 +8,7 @@ const id = parseInt(params.get("id"));
 async function getData() {
 	const response = await fetch('data/photographers.json');
 	return await response.json();
-};
+}
 
 //Récupération de l'objet photographer concerné en fonction de l'id affichée dans l'URL et de ses média
 async function getPhotographerData(id) {
@@ -18,7 +18,7 @@ async function getPhotographerData(id) {
 	//Récupération du nouveau array avec tous les média du photographe concerné
 	const portfolio = media.filter((media) => media.photographerId === id);
 	return [photographer, portfolio];
-};
+}
 
 //Affichage du header avec photographer factory
 function displayDataPhotographer(photographer) {
@@ -26,7 +26,7 @@ function displayDataPhotographer(photographer) {
 	const photographerModel = photographerFactory(photographer);
 	const profileHeader = photographerModel.getProfileHeader();
 	photographerHeader.appendChild(profileHeader);
-};
+}
 
 //Affichage des media avec média factory
 function displayPortfolio(portfolio) {
@@ -38,12 +38,11 @@ function displayPortfolio(portfolio) {
 		//Pour chaque média affiché on écoute l'événement sur le bouton "liker"
 		document.querySelector(`#media-${media.id} .media__button`).addEventListener("click", likesControl);
 	});
-	//Récupération du NodeList des média pour le tri des média
-	listOfMedia = document.querySelectorAll(".portfolio-section article");
+	listOfMedia = document.querySelectorAll(".portfolio-section article");//!Nodelist
 	//Les média sont triés par popularité par défault
 	sortMedia("likes");
 	initLightbox();
-};
+}
 
 //Fonction pour la gestion des likes sur chaque media + retourne le n total de likes du photographe
 function likesControl(event) {
@@ -60,11 +59,11 @@ function likesControl(event) {
 			likesContent.innerText = parseInt(likesContent.innerText) - 1;
 			--totalLikes;
 			delete likesBtn.dataset.isLiked;
-	};
+	}
 	//on appelle la fonction qui met à jour le n total de likes du photographe affiché dans aside info en mettant afterlikescontrol à true
 	getLikesTotalforAside(null, true);
 	return totalLikes;
-};
+}
 
 //Récuperation des tous les likes du photographe avant et après l'événement "like"
 function getLikesTotalforAside(portfolio, afterLikesControl = false) {
@@ -79,7 +78,7 @@ function getLikesTotalforAside(portfolio, afterLikesControl = false) {
 		});
 		document.querySelector(".info-section__current-rating").innerText = totalLikes;
 	}
-};
+}
 
 //Affichage de la section prix et likes
 function displayAside(photographer, portfolio) {
@@ -89,7 +88,7 @@ function displayAside(photographer, portfolio) {
 	infoSection.appendChild(asideCardDOM);
 	//appel de la fonction qui affiche le n total de likes mis à jour 
 	getLikesTotalforAside(portfolio);
-};
+}
 
 async function init() {
 	const [photographer, portfolio]  = await getPhotographerData(id);
@@ -97,6 +96,6 @@ async function init() {
 	displayPortfolio(portfolio);
 	displayAside(photographer, portfolio);
 	//initLightbox();
-};
+}
 
 init();
