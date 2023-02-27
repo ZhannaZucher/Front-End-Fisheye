@@ -1,8 +1,4 @@
 /*Styles pour la présentation du photographe*/
-*:focus {
-    border: 3px solid black;
-}
-
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0 auto;
@@ -411,17 +407,11 @@ transition: 300ms;
 .lightbox__content-next-icon {
     width: 40px;
     height: 50px;
-    scale: 1.2;
-    transition: 300ms;
-}
-
-.lightbox__content-next-icon:hover,
-.lightbox__content-previous-icon:hover {
-    scale: 1.3;
+    transform: scale(1.2);
 }
 
 .lightbox__content-next-icon {
-    transform: rotate(180deg);
+    transform: rotate(180deg) scale(1.2);
 }
 
 .lightbox__media-container {
@@ -455,4 +445,3 @@ transition: 300ms;
     padding-left: 10px;
     margin-top: 10px;
 }
-
