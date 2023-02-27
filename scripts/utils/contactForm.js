@@ -54,7 +54,7 @@ document.addEventListener("keydown", function(event) {
     if(modal.ariaHidden === "false" && event.key === "Escape") {
         closeModal();
     }
-});
+})
 
 //Affichage du contenu du formulaire dans la console, fermeture et reset du formulaire
 form.addEventListener('submit', function(event) {
@@ -62,4 +62,4 @@ form.addEventListener('submit', function(event) {
     inputs.forEach((input) => console.log(input.value));
     closeModal();
     inputs.forEach((input) => (input.value = ""));
-});
+})

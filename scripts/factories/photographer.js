@@ -12,7 +12,6 @@ function photographerFactory(data) {
         link.setAttribute("href", `photographer.html?id=${id}`);
         link.setAttribute("role", "link");
         link.setAttribute("aria-label", `Profil de ${name}`);
-        //link.setAttribute("title", `Visiter la page de profil de ${name}`);
 
         const img = document.createElement('img');
         img.setAttribute("src", picture);
@@ -47,7 +46,7 @@ function photographerFactory(data) {
     }
 
     function getProfileHeader() {
-        //Création du template pour la structure DOM du header présentant un photographe
+        //Création du template pour la structure DOM du header présentant le photographe
         const profileHeader = document.createElement("div");
         profileHeader.classList.add("photograph-header__row");
 
@@ -109,5 +108,5 @@ function photographerFactory(data) {
 
         return (aside);
     }
-    return { name, picture, getUserCardDOM, getProfileHeader, getInfoCardDOM };
+    return { getUserCardDOM, getProfileHeader, getInfoCardDOM };
 }

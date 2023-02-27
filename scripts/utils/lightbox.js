@@ -85,7 +85,7 @@ let currentViewIndex = 0;
 //fonction permettant de boucler la liste de vues dans les deux sens, l'argument "n" correspond au sens de changement de vues dans lightbox
 function findViewsIndex(n) {
 	const views = document.querySelectorAll(".media__link");//!Nodelist
-	//si on est au bout de la liste des media, on reinitialise sur le premeier élément de la liste
+	//si on est au bout de la liste des media, on reinitialise sur le premier élément de la liste
 	if (n > views.length - 1) {
 		currentViewIndex = 0;
 	} else if (n < 0) {

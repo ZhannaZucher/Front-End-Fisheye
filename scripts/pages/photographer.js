@@ -95,7 +95,6 @@ async function init() {
 	displayDataPhotographer(photographer);
 	displayPortfolio(portfolio);
 	displayAside(photographer, portfolio);
-	//initLightbox();
 }
 
 init();
