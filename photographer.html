@@ -15,7 +15,7 @@
     </header>
     <main id="main" aria-hidden="false">
       <div class="photograph-header">
-        <button class="contact-button" aria-label="Contactez-moi" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact-button" aria-label="Contactez-moi">Contactez-moi</button>
       </div>
 
       <!--Dropdown menu pour trier les média-->
@@ -26,13 +26,13 @@
               Popularité
             </button>
             <ul role="listbox" aria-labelledby="filter" class="dropdown__list">
-              <li role="option" tabindex="0" aria-selected="true" data-name="likes" class="dropdown__list-item">
+              <li role="option" value="Popularité" tabindex="0" aria-selected="true" data-name="likes" class="dropdown__list-item">
                 Popularité
               </li>
-              <li role="option" tabindex="0" aria-selected="false" data-name="date" class="dropdown__list-item">
+              <li role="option" value="Date" tabindex="0" aria-selected="false" data-name="date" class="dropdown__list-item">
                 Date
               </li>
-              <li role="option" tabindex="0" aria-selected="false" data-name="title" class="dropdown__list-item">
+              <li role="option" value="Titre" tabindex="0" aria-selected="false" data-name="title" class="dropdown__list-item">
                 Titre
               </li>
             </ul>
@@ -50,7 +50,7 @@
 			<div class="modal">
 				<header class="modal-header">
           <h1 class="modal-header__title" id="modal-title">Contactez-moi</h1>
-          <img class="modal-header__close-icon close-button" aria-label="Fermer la modale de contact" alt="croix" src="assets/icons/close.svg" onclick="closeModal()" tabindex="0">
+          <img class="modal-header__close-icon close-button" aria-label="Fermer la modale de contact" alt="croix" src="assets/icons/close.svg" tabindex="0">
         </header>
 				<form>
 					<div>
@@ -92,12 +92,12 @@
         </a>
       </div>
     </dialog>
-    <script src="scripts/factories/media.js"></script>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
-    <script src="scripts/utils/contactForm.js"></script>
-    <script src="scripts/utils/sortMediaDropdown.js"></script>
-    <script src="scripts/utils/lightbox.js"></script>
+    <script type="module" src="scripts/factories/media.js"></script>
+    <script type="module" src="scripts/factories/photographer.js"></script>
+    <script type="module" src="scripts/pages/photographer.js"></script>
+    <script type="module" src="scripts/utils/contactForm.js"></script>
+    <script type="module" src="scripts/utils/sortMediaDropdown.js"></script>
+    <script type="module" src="scripts/utils/lightbox.js"></script>
     <script src="scripts/utils/trapFocus.js"></script>
   </body>
 </html>
