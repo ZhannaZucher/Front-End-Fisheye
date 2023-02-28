@@ -1,8 +1,12 @@
+const modal = document.getElementById("contact-modal");
+const lightbox = document.querySelector(".lightbox-wrapper");
+const dropdownList = document.querySelector(".dropdown__list");
+
 // Fonction qui piège le focus à l'intérieur d'une modale ouverte
 const focusInModal = function (event, element) {
 	event.preventDefault();
 	const focusableSelector = ".close-button, a, button, textarea, input, li[role='option']";
-	focusables = Array.from(element.querySelectorAll(focusableSelector));
+	let focusables = Array.from(element.querySelectorAll(focusableSelector));
 	
 	//Récupération de l'index de l'élément ayant le focus 
 	let index = focusables.findIndex(f => f === element.querySelector(":focus"));
@@ -19,7 +23,7 @@ const focusInModal = function (event, element) {
 	}
 	//mise de focus sur index 	
 	focusables[index].focus();
-};
+}
 
 //Ecoute de l'événement du clavier pour savoir sur quel élément appeler la fonction qui gère le focus
 window.addEventListener("keydown", function (event) {
@@ -30,4 +34,4 @@ window.addEventListener("keydown", function (event) {
 	} else if (event.key === "Tab" && dropdownList.style.display === "flex") {
 		focusInModal(event, dropdownList);
 	}
-});                                       
+})                                       

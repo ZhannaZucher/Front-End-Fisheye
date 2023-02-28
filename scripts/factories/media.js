@@ -1,4 +1,4 @@
-function mediaFactory(data) {
+export function mediaFactory(data) {
 //Destructuration de l'objet et son assignement à la variable 
 	const { id, photographerId, title, image, video, date, likes } = data;
 

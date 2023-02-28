@@ -9,13 +9,12 @@ function runDropdownMenu(show) {
 	let switchCurrentState = dropdownButton.getAttribute("aria-expanded") == "true" ? "false" : "true";
 	dropdownButton.setAttribute("aria-expanded", switchCurrentState);
 	dropdownList.style.display = show ? "flex" : "none";  
-	//dropdownButton.focus(); //!problème
-}	
+}		
 
 //Ecoute de l'événement sur le bouton du menu déroulant
 dropdownButton.addEventListener("click", () => {
 	runDropdownMenu(true); 
-});
+})
 
 //fermeture du dropdown avec ESC
 dropdownList.addEventListener("keydown", function (event) {
@@ -23,7 +22,7 @@ dropdownList.addEventListener("keydown", function (event) {
 		runDropdownMenu(false);
 		dropdownButton.focus();	
 	}	
-});
+})
 
 //Appel de la fonction gérant les options pour chaque option onclick et sur événement du clavier
 dropdownOptions.forEach((option) => {
@@ -31,13 +30,12 @@ dropdownOptions.forEach((option) => {
 	option.addEventListener("keydown", (event) => {
 		if (event.key == "Enter") {		
 			selectOption(option);
-			//dropdownButton.focus(); //!problème
 		}
 	});
-});
+})
 
 function selectOption(option) {
-	if (option.getAttribute("aria-selected") == "false") {
+	if (option.getAttribute("aria-selected") === "false") {
 		//on met à false la valeur booléenne de l'attribut "aria-selected" de l'option mise à "true" par défaut:
 		let unselectedOption = document.querySelector(`.dropdown__list-item[aria-selected="true"]`);
 		unselectedOption.setAttribute("aria-selected", "false");
@@ -52,11 +50,12 @@ function selectOption(option) {
 }
 
 //tri du tableau de média du photographe
-function sortMedia(type) {
+export function sortMedia(type) {
+	const listOfMedia = document.querySelectorAll(".portfolio-section article");//!Nodelist
 	let array = [...listOfMedia];
 	switch (type) {
 		case "likes":
-			array.sort((a, b) => b.dataset.likes - a.dataset.likes);
+			array.sort((a, b) => b.dataset.likes - a.dataset.likes); //ordre décroissant
 			break;
 		case "date":
 			array.sort((a, b) => new Date(a.dataset.date).getTime() > new Date(b.dataset.date).getTime() ? 1 : -1);
@@ -67,5 +66,5 @@ function sortMedia(type) {
 	portfolioSection.innerHTML = "";
 	array.forEach((element) => {
 		portfolioSection.appendChild(element);
-	});
+	})
 }

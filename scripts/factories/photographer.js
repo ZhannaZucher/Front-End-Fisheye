@@ -1,4 +1,4 @@
-function photographerFactory(data) {
+export function photographerFactory(data) {
     //Desctructuration de l'objet et son assignement à la variable
     const { name, portrait, city, country, id, tagline, price } = data;
 
@@ -84,20 +84,20 @@ function photographerFactory(data) {
 
     function getInfoCardDOM() {
         //Création du template pour la structure DOM de l'aside avec infos supplémentaires d'un photographe
-        aside = document.createElement("div");
+        const aside = document.createElement("div");
         aside.classList.add("info-section__row");
 
-        totalRating = document.createElement("p");
+        const totalRating = document.createElement("p");
         totalRating.classList.add("info-section__rating");
 
-        infoLikes = document.createElement("span");
+        const infoLikes = document.createElement("span");
         infoLikes.classList.add("info-section__current-rating");
 
         const heartIcon = document.createElement('img');
         heartIcon.setAttribute("src", "assets/icons/heart.svg");
         heartIcon.setAttribute("alt", "likes");
 
-        pricePerDay = document.createElement("p");
+        const pricePerDay = document.createElement("p");
         pricePerDay.classList.add("info-section__price");
         pricePerDay.textContent = `${price}€ / jour`;
 

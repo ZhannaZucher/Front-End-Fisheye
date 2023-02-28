@@ -1,8 +1,16 @@
+import { photographerFactory } from "../factories/photographer.js";
+import { sortMedia } from "../utils/sortMediaDropdown.js";
+import { mediaFactory } from "../factories/media.js";
+import { initLightbox } from "../utils/lightbox.js";
+
 let totalLikes = 0; // variable pour compter les likes sur les média
 
 //Extraction de l'Id du photographe depuis l'URl affichée:
-const params = new URL(document.location).searchParams;
-const id = parseInt(params.get("id"));
+export function getIdPhotographer() {
+	const params = new URL(document.location).searchParams;
+	const id = parseInt(params.get("id"));
+	return id; 
+}
 
 //Récupération des données des photographes depuis le fichier JSON
 async function getData() {
@@ -38,7 +46,7 @@ function displayPortfolio(portfolio) {
 		//Pour chaque média affiché on écoute l'événement sur le bouton "liker"
 		document.querySelector(`#media-${media.id} .media__button`).addEventListener("click", likesControl);
 	});
-	listOfMedia = document.querySelectorAll(".portfolio-section article");//!Nodelist
+	//listOfMedia = document.querySelectorAll(".portfolio-section article");//!Nodelist
 	//Les média sont triés par popularité par défault
 	sortMedia("likes");
 	initLightbox();
@@ -48,7 +56,7 @@ function displayPortfolio(portfolio) {
 function likesControl(event) {
 	const likesBtn = event.currentTarget;
 	//on accède au noeud du DOM précédant le boutton qui contient le nombre de likes
-	likesContent = likesBtn.previousElementSibling;
+	let likesContent = likesBtn.previousElementSibling;
 		if(!likesBtn.dataset.isLiked) {
 			likesContent.innerText = parseInt(likesContent.innerText) + 1;
 			++totalLikes;
@@ -91,7 +99,7 @@ function displayAside(photographer, portfolio) {
 }
 
 async function init() {
-	const [photographer, portfolio]  = await getPhotographerData(id);
+	const [photographer, portfolio]  = await getPhotographerData(getIdPhotographer());
 	displayDataPhotographer(photographer);
 	displayPortfolio(portfolio);
 	displayAside(photographer, portfolio);

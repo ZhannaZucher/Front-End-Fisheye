@@ -6,9 +6,10 @@ const prevBtn = document.querySelector(".lightbox__content-previous");
 const mediaContainer = document.querySelector(".lightbox__media-display");
 const mediaTitle = document.querySelector(".lightbox__media-title");
 const links = document.getElementsByClassName("media__link"); //!HTMLCollection
+const main = document.getElementById("main");
 
 //initLbox appelée dans displayPortfolio
-function initLightbox() {
+export function initLightbox() {
 	//ouverture de Lightbox
 	openLightbox();
 

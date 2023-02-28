@@ -9,10 +9,6 @@
 		"browser": true,
 		"es6": true
 	},
-	"rules": {
-		"no-unused-vars": "off",
-		"no-undef": "off"
-	},
 	"extends": [
 		"eslint:recommended"
 	]

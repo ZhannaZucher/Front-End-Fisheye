@@ -1,3 +1,5 @@
+import { photographerFactory } from "../factories/photographer.js";
+
 //Récupération des données des photographes depuis le fichier JSON
 async function getPhotographers() {
     const response = await fetch('data/photographers.json');
@@ -20,5 +22,5 @@ async function getPhotographers() {
         displayData(photographers);
     }
     
-    init();
+    init()
     

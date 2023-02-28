@@ -1,16 +1,16 @@
+import { getIdPhotographer } from "../pages/photographer.js";
+
 //Récupération des éléments du DOM
 const modal = document.getElementById("contact-modal");
 const background = document.querySelector(".background-modal");
 const form = document.querySelector("form");
-const title = document.querySelector(".modal-header__title");
-const photographerName = document.querySelector(".photograph-header__title"); 
+const title = document.querySelector(".modal-header__title"); 
 const firstName = document.getElementById("firstname");
 const lastName = document.getElementById("lastname");
 const email = document.getElementById("email");
 const message = document.getElementById("message");
 const contactButton = document.querySelector(".contact-button");
 const closeButton = document.querySelector(".close-button");
-const sendButton = document.querySelector(".send-button");
 const body = document.querySelector("body");
 const main = document.getElementById("main");
 const inputs = [firstName, lastName, email, message]; 
@@ -24,7 +24,7 @@ async function getDatas() {
 //Récupération du nom du photographe et affichage du titre personnalisé
 async function customizeTitle() {
     const data = await getDatas();
-    const photographer = data.photographers.find((photographer) => photographer.id === id);
+    const photographer = data.photographers.find((photographer) => photographer.id === getIdPhotographer());
     title.textContent += " " + photographer.name;
 }
 customizeTitle();
@@ -39,6 +39,8 @@ function displayModal() {
     modal.focus();
 }
 
+contactButton.addEventListener("click", displayModal);
+
 //Fermeture du formulaire 
 function closeModal() {
     modal.style.display = "none";
@@ -48,6 +50,8 @@ function closeModal() {
     body.classList.remove("noscroll");
     contactButton.focus();                          
 }
+
+closeButton.addEventListener("click", closeModal);
 
 //Fermeture du formulaire avec ESC
 document.addEventListener("keydown", function(event) {
