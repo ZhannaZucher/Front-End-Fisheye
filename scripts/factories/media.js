@@ -16,7 +16,7 @@ export function mediaFactory(data) {
 			view = document.createElement("video");
 			view.removeAttribute("controls");
 			view.setAttribute("src", `assets/portfolio/${photographerId}/${video}`);
-			view.setAttribute("alt", `${title}`);
+			view.setAttribute("title", `${title}`);
 			view.setAttribute("preload", "metadata");
 			view.classList.add("media__view");
 			view.dataset.id = `${id}`;
