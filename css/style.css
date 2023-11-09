@@ -6,9 +6,9 @@ body {
     margin: 0 auto;
 }
 
-*:focus {
+/* *:focus {
     box-shadow: 0 0 15px blue;
-}
+} */
 
 .header {
     display: flex;
